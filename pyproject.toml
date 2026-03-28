@@ -1,0 +1,41 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "spark-platform"
+version = "0.1.0"
+description = "Olist E-Commerce Data Platform — Medallion Architecture on Databricks/AWS"
+requires-python = ">=3.11"
+dependencies = [
+    "pyspark>=3.5.0",
+    "delta-spark>=3.1.0",
+    "pyyaml>=6.0",
+    "python-dotenv>=1.0.0",
+]
+
+[project.scripts]
+bronze-olist      = "src.jobs.entrypoints:run_bronze"
+silver-olist      = "src.jobs.entrypoints:run_silver"
+gold-dimensions   = "src.jobs.entrypoints:run_gold_dimensions"
+gold-facts        = "src.jobs.entrypoints:run_gold_facts"
+uc-bootstrap      = "src.jobs.entrypoints:run_uc_bootstrap"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py"]
+
+[tool.black]
+line-length = 100
+target-version = ["py311"]
+
+[tool.isort]
+profile = "black"
+line_length = 100
+
+[tool.mypy]
+python_version = "3.11"
+ignore_missing_imports = true
