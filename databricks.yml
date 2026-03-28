@@ -1,0 +1,51 @@
+bundle:
+  name: olist-ecommerce-data-platform
+
+variables:
+  # Cluster
+  dev_node_type:
+    default: m5.xlarge
+  prod_node_type:
+    default: m5.2xlarge
+  dev_num_workers:
+    default: 2
+  prod_num_workers:
+    default: 8
+
+  # Storage
+  dev_s3_bucket:
+    default: s3://platform-dev
+  prod_s3_bucket:
+    default: s3://platform-prod
+
+  # Unity Catalog
+  dev_catalog:
+    default: spark_platform_dev
+  prod_catalog:
+    default: spark_platform_prod
+
+targets:
+  dev:
+    mode: development
+    workspace:
+      host: ${workspace.host}
+    variables:
+      node_type: ${var.dev_node_type}
+      num_workers: ${var.dev_num_workers}
+      s3_bucket: ${var.dev_s3_bucket}
+      catalog: ${var.dev_catalog}
+
+  prod:
+    mode: production
+    workspace:
+      host: ${workspace.host}
+    variables:
+      node_type: ${var.prod_node_type}
+      num_workers: ${var.prod_num_workers}
+      s3_bucket: ${var.prod_s3_bucket}
+      catalog: ${var.prod_catalog}
+
+# Chaque job est défini dans son propre fichier YAML dans resources/jobs/
+# Ils seront ajoutés phase par phase
+include:
+  - resources/jobs/*.yml

@@ -1,0 +1,16 @@
+env: prod
+catalog: spark_platform_prod
+schema_bronze: bronze
+schema_silver: silver
+schema_gold: gold
+
+storage:
+  raw_bucket: s3://platform-prod/raw/
+  delta_bucket: s3://platform-prod/delta/
+
+spark:
+  master: yarn
+  shuffle_partitions: 200
+
+quality:
+  mode: fail

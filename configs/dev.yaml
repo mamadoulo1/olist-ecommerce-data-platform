@@ -1,0 +1,16 @@
+env: dev
+catalog: spark_platform_dev
+schema_bronze: bronze
+schema_silver: silver
+schema_gold: gold
+
+storage:
+  raw_bucket: s3://platform-dev/raw/
+  delta_bucket: s3://platform-dev/delta/
+
+spark:
+  master: "local[*]"
+  shuffle_partitions: 8
+
+quality:
+  mode: warn
