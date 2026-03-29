@@ -1,0 +1,37 @@
+{
+  "name": "olist_payments",
+  "version": "1",
+  "description": "Paiements Olist — une ligne par mode de paiement par commande (une commande peut avoir plusieurs paiements)",
+  "fields": [
+    {
+      "name": "order_id",
+      "type": "string",
+      "nullable": false,
+      "description": "Clé vers la table orders"
+    },
+    {
+      "name": "payment_sequential",
+      "type": "integer",
+      "nullable": false,
+      "description": "Numéro séquentiel si plusieurs paiements pour une même commande"
+    },
+    {
+      "name": "payment_type",
+      "type": "string",
+      "nullable": false,
+      "description": "Mode de paiement : credit_card, boleto, voucher, debit_card"
+    },
+    {
+      "name": "payment_installments",
+      "type": "integer",
+      "nullable": false,
+      "description": "Nombre de mensualités choisies par le client"
+    },
+    {
+      "name": "payment_value",
+      "type": "double",
+      "nullable": false,
+      "description": "Montant de ce paiement"
+    }
+  ]
+}

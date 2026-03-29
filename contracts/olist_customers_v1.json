@@ -1,0 +1,37 @@
+{
+  "name": "olist_customers",
+  "version": "1",
+  "description": "Clients Olist — une ligne par customer_id (clé technique par commande)",
+  "fields": [
+    {
+      "name": "customer_id",
+      "type": "string",
+      "nullable": false,
+      "description": "Clé technique par commande — un même client peut avoir plusieurs customer_id"
+    },
+    {
+      "name": "customer_unique_id",
+      "type": "string",
+      "nullable": false,
+      "description": "Vrai identifiant unique du client — utilisé pour la déduplication en Silver"
+    },
+    {
+      "name": "zip_code",
+      "type": "string",
+      "nullable": false,
+      "description": "Code postal du client"
+    },
+    {
+      "name": "city",
+      "type": "string",
+      "nullable": false,
+      "description": "Ville du client"
+    },
+    {
+      "name": "state",
+      "type": "string",
+      "nullable": false,
+      "description": "État brésilien du client (2 lettres ex: SP, RJ)"
+    }
+  ]
+}

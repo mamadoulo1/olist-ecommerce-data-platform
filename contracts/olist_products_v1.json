@@ -1,0 +1,61 @@
+{
+  "name": "olist_products",
+  "version": "1",
+  "description": "Produits Olist — une ligne par produit",
+  "fields": [
+    {
+      "name": "product_id",
+      "type": "string",
+      "nullable": false,
+      "description": "Identifiant unique du produit"
+    },
+    {
+      "name": "category_name_pt",
+      "type": "string",
+      "nullable": true,
+      "description": "Catégorie en portugais — sera traduite EN en Silver"
+    },
+    {
+      "name": "name_len",
+      "type": "integer",
+      "nullable": true,
+      "description": "Longueur du nom du produit en caractères"
+    },
+    {
+      "name": "desc_len",
+      "type": "integer",
+      "nullable": true,
+      "description": "Longueur de la description du produit en caractères"
+    },
+    {
+      "name": "photos_qty",
+      "type": "integer",
+      "nullable": true,
+      "description": "Nombre de photos du produit"
+    },
+    {
+      "name": "weight_g",
+      "type": "integer",
+      "nullable": true,
+      "description": "Poids du produit en grammes"
+    },
+    {
+      "name": "length_cm",
+      "type": "double",
+      "nullable": true,
+      "description": "Longueur en cm"
+    },
+    {
+      "name": "height_cm",
+      "type": "double",
+      "nullable": true,
+      "description": "Hauteur en cm"
+    },
+    {
+      "name": "width_cm",
+      "type": "double",
+      "nullable": true,
+      "description": "Largeur en cm"
+    }
+  ]
+}

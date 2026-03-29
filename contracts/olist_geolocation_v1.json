@@ -1,0 +1,37 @@
+{
+  "name": "olist_geolocation",
+  "version": "1",
+  "description": "Géolocalisation Olist — plusieurs lignes par code postal (lat/lng variables), médiane prise en Silver",
+  "fields": [
+    {
+      "name": "zip_code_prefix",
+      "type": "string",
+      "nullable": false,
+      "description": "5 premiers chiffres du code postal brésilien"
+    },
+    {
+      "name": "lat",
+      "type": "double",
+      "nullable": false,
+      "description": "Latitude"
+    },
+    {
+      "name": "lng",
+      "type": "double",
+      "nullable": false,
+      "description": "Longitude"
+    },
+    {
+      "name": "city",
+      "type": "string",
+      "nullable": false,
+      "description": "Ville"
+    },
+    {
+      "name": "state",
+      "type": "string",
+      "nullable": false,
+      "description": "État brésilien (2 lettres)"
+    }
+  ]
+}

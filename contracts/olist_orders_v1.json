@@ -1,0 +1,55 @@
+{
+  "name": "olist_orders",
+  "version": "1",
+  "description": "Commandes Olist — une ligne par commande",
+  "fields": [
+    {
+      "name": "order_id",
+      "type": "string",
+      "nullable": false,
+      "description": "Identifiant unique de la commande"
+    },
+    {
+      "name": "customer_id",
+      "type": "string",
+      "nullable": false,
+      "description": "Clé vers la table customers (pas l'ID unique du client)"
+    },
+    {
+      "name": "order_status",
+      "type": "string",
+      "nullable": false,
+      "description": "Statut : delivered, shipped, canceled, invoiced, processing, approved, unavailable"
+    },
+    {
+      "name": "purchase_ts",
+      "type": "timestamp",
+      "nullable": false,
+      "description": "Date et heure d'achat"
+    },
+    {
+      "name": "approved_ts",
+      "type": "timestamp",
+      "nullable": true,
+      "description": "Date d'approbation du paiement"
+    },
+    {
+      "name": "carrier_delivery_ts",
+      "type": "timestamp",
+      "nullable": true,
+      "description": "Date de remise au transporteur"
+    },
+    {
+      "name": "customer_delivery_ts",
+      "type": "timestamp",
+      "nullable": true,
+      "description": "Date de livraison effective au client"
+    },
+    {
+      "name": "estimated_delivery_ts",
+      "type": "timestamp",
+      "nullable": true,
+      "description": "Date de livraison estimée promise au client"
+    }
+  ]
+}

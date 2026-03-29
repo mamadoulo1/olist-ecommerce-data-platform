@@ -1,0 +1,49 @@
+{
+  "name": "olist_reviews",
+  "version": "1",
+  "description": "Avis clients Olist — une ligne par avis (une commande peut avoir plusieurs avis)",
+  "fields": [
+    {
+      "name": "review_id",
+      "type": "string",
+      "nullable": false,
+      "description": "Identifiant unique de l'avis"
+    },
+    {
+      "name": "order_id",
+      "type": "string",
+      "nullable": false,
+      "description": "Clé vers la table orders"
+    },
+    {
+      "name": "score",
+      "type": "integer",
+      "nullable": false,
+      "description": "Note client de 1 (mauvais) à 5 (excellent)"
+    },
+    {
+      "name": "title",
+      "type": "string",
+      "nullable": true,
+      "description": "Titre de l'avis (optionnel)"
+    },
+    {
+      "name": "comment",
+      "type": "string",
+      "nullable": true,
+      "description": "Commentaire libre du client (optionnel)"
+    },
+    {
+      "name": "creation_ts",
+      "type": "timestamp",
+      "nullable": true,
+      "description": "Date de création de l'avis"
+    },
+    {
+      "name": "answer_ts",
+      "type": "timestamp",
+      "nullable": true,
+      "description": "Date de réponse du vendeur"
+    }
+  ]
+}

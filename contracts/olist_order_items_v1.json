@@ -1,0 +1,49 @@
+{
+  "name": "olist_order_items",
+  "version": "1",
+  "description": "Items des commandes Olist — une ligne par produit dans une commande",
+  "fields": [
+    {
+      "name": "order_id",
+      "type": "string",
+      "nullable": false,
+      "description": "Clé vers la table orders"
+    },
+    {
+      "name": "order_item_id",
+      "type": "integer",
+      "nullable": false,
+      "description": "Numéro séquentiel de l'item dans la commande (commence à 1)"
+    },
+    {
+      "name": "product_id",
+      "type": "string",
+      "nullable": false,
+      "description": "Clé vers la table products"
+    },
+    {
+      "name": "seller_id",
+      "type": "string",
+      "nullable": false,
+      "description": "Clé vers la table sellers"
+    },
+    {
+      "name": "shipping_limit_ts",
+      "type": "timestamp",
+      "nullable": true,
+      "description": "Date limite d'expédition pour le vendeur"
+    },
+    {
+      "name": "price",
+      "type": "double",
+      "nullable": false,
+      "description": "Prix unitaire du produit"
+    },
+    {
+      "name": "freight_value",
+      "type": "double",
+      "nullable": false,
+      "description": "Frais de livraison pour cet item"
+    }
+  ]
+}

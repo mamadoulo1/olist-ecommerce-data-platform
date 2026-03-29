@@ -1,0 +1,31 @@
+{
+  "name": "olist_sellers",
+  "version": "1",
+  "description": "Vendeurs Olist — une ligne par vendeur",
+  "fields": [
+    {
+      "name": "seller_id",
+      "type": "string",
+      "nullable": false,
+      "description": "Identifiant unique du vendeur"
+    },
+    {
+      "name": "zip_code",
+      "type": "string",
+      "nullable": false,
+      "description": "Code postal du vendeur"
+    },
+    {
+      "name": "city",
+      "type": "string",
+      "nullable": false,
+      "description": "Ville du vendeur"
+    },
+    {
+      "name": "state",
+      "type": "string",
+      "nullable": false,
+      "description": "État brésilien du vendeur (2 lettres)"
+    }
+  ]
+}
