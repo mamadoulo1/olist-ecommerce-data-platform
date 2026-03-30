@@ -19,6 +19,9 @@ build/
 data/olist/*.csv
 data/olist/raw/
 
+# Zip source
+brazilian-ecommerce.zip
+
 # Databricks
 .databricks/
 
