@@ -4,12 +4,32 @@ import sys
 from datetime import datetime, timezone
 
 # Attributs standards du LogRecord Python — on les exclut pour ne garder que les champs custom
-_STANDARD_ATTRS = frozenset({
-    "args", "created", "exc_info", "exc_text", "filename", "funcName",
-    "levelname", "levelno", "lineno", "message", "module", "msecs", "msg",
-    "name", "pathname", "process", "processName", "relativeCreated",
-    "stack_info", "thread", "threadName", "taskName",
-})
+_STANDARD_ATTRS = frozenset(
+    {
+        "args",
+        "created",
+        "exc_info",
+        "exc_text",
+        "filename",
+        "funcName",
+        "levelname",
+        "levelno",
+        "lineno",
+        "message",
+        "module",
+        "msecs",
+        "msg",
+        "name",
+        "pathname",
+        "process",
+        "processName",
+        "relativeCreated",
+        "stack_info",
+        "thread",
+        "threadName",
+        "taskName",
+    }
+)
 
 
 class JsonFormatter(logging.Formatter):
@@ -27,10 +47,9 @@ class JsonFormatter(logging.Formatter):
             log_entry["exception"] = self.formatException(record.exc_info)
 
         # Ajoute les champs custom passés via extra={...}
-        log_entry.update({
-            k: v for k, v in record.__dict__.items()
-            if k not in _STANDARD_ATTRS
-        })
+        log_entry.update(
+            {k: v for k, v in record.__dict__.items() if k not in _STANDARD_ATTRS}
+        )
 
         return json.dumps(log_entry, ensure_ascii=False)
 
@@ -56,4 +75,3 @@ def get_logger(name: str, level: int = logging.INFO) -> logging.Logger:
     logger.propagate = False
 
     return logger
-

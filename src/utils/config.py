@@ -9,30 +9,30 @@ import yaml
 
 @dataclass
 class StorageConfig:
-    raw_bucket: str        # s3://bucket/raw/olist/
-    delta_bucket: str      # s3://bucket/delta/
+    raw_bucket: str  # s3://bucket/raw/olist/
+    delta_bucket: str  # s3://bucket/delta/
 
 
 @dataclass
 class SparkConfig:
-    master: str            # "local[*]" en dev, "yarn" en prod
+    master: str  # "local[*]" en dev, "yarn" en prod
     shuffle_partitions: int = 200
 
 
 @dataclass
 class QualityConfig:
-    mode: str = "warn"     # "warn" en dev, "fail" en prod
+    mode: str = "warn"  # "warn" en dev, "fail" en prod
 
 
 @dataclass
 class AppConfig:
-    env: str               # "dev" ou "prod"
-    catalog: str           # "spark_platform_dev" ou "spark_platform_prod"
+    env: str  # "dev" ou "prod"
+    catalog: str  # "spark_platform_dev" ou "spark_platform_prod"
     schema_bronze: str = "bronze"
     schema_silver: str = "silver"
     schema_gold: str = "gold"
     storage: StorageConfig = field(default_factory=lambda: StorageConfig("", ""))
-    spark: SparkConfig = field(default_factory=SparkConfig)
+    spark: SparkConfig = field(default_factory=lambda: SparkConfig(master="local[*]"))
     quality: QualityConfig = field(default_factory=QualityConfig)
 
     @classmethod

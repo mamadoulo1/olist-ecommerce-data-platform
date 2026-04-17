@@ -59,7 +59,9 @@ class SchemaRegistry:
         matches = sorted(_CONTRACTS_DIR.glob(f"{name}_v*.json"))
 
         if not matches:
-            raise FileNotFoundError(f"Aucun contrat trouvé pour '{name}' dans {_CONTRACTS_DIR}")
+            raise FileNotFoundError(
+                f"Aucun contrat trouvé pour '{name}' dans {_CONTRACTS_DIR}"
+            )
 
         # Prend la version la plus récente (tri alphabétique → v1 < v2 < v9)
         return matches[-1]
@@ -75,7 +77,9 @@ class SchemaRegistry:
             spark_type = _TYPE_MAP.get(field["type"])
 
             if spark_type is None:
-                raise ValueError(f"Type inconnu '{field['type']}' dans le contrat {path.name}")
+                raise ValueError(
+                    f"Type inconnu '{field['type']}' dans le contrat {path.name}"
+                )
 
             fields.append(
                 StructField(

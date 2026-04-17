@@ -11,7 +11,9 @@ from src.utils.logger import get_logger
 logger = get_logger(__name__)
 
 
-def get_spark_session(config: AppConfig, app_name: str = "olist-platform") -> SparkSession:
+def get_spark_session(
+    config: AppConfig, app_name: str = "olist-platform"
+) -> SparkSession:
     """
     Creates or retrieves a SparkSession configured for the given environment.
 
@@ -49,8 +51,7 @@ def _build_local_session(config: AppConfig, app_name: str) -> SparkSession:
     from delta import configure_spark_with_delta_pip
 
     builder = (
-        SparkSession.builder
-        .appName(app_name)
+        SparkSession.builder.appName(app_name)
         .master(config.spark.master)
         .config("spark.sql.shuffle.partitions", str(config.spark.shuffle_partitions))
     )

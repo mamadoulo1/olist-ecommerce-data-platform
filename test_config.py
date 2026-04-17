@@ -52,7 +52,7 @@
 
 from src.utils.config import AppConfig
 
-dev  = AppConfig.load("configs/dev.yaml")
+dev = AppConfig.load("configs/dev.yaml")
 prod = AppConfig.load("configs/prod.yaml")
 
 print(dev.catalog, dev.spark.master, dev.quality.mode)

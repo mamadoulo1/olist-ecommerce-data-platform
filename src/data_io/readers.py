@@ -29,7 +29,8 @@ class CsvReader:
 
         # Ajoute une colonne _corrupt_record pour capturer les lignes malformées
         schema_with_corrupt = StructType(
-            self.schema.fields + [StructField("_corrupt_record", StringType(), nullable=True)]
+            self.schema.fields
+            + [StructField("_corrupt_record", StringType(), nullable=True)]
         )
 
         df = (
@@ -134,6 +135,8 @@ class DatabaseReader:
         """Reads a table from a relational database using JDBC."""
         df = self.spark.read.jdbc(url=url, table=table, properties=properties)
 
-        logger.info("Table lue depuis la base de données", extra={"url": url, "table": table})
+        logger.info(
+            "Table lue depuis la base de données", extra={"url": url, "table": table}
+        )
 
         return df
