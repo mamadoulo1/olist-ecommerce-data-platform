@@ -1,0 +1,34 @@
+resources:
+  jobs:
+    bronze_ingestion:
+      name: "[${bundle.target}] Bronze Ingestion - Olist"
+      description: "Ingests all 8 Olist CSV tables into Bronze Delta layer with quarantine routing."
+
+      job_clusters:
+        - job_cluster_key: bronze_cluster
+          new_cluster:
+            spark_version: "15.4.x-scala2.12"
+            node_type_id: ${var.node_type}
+            num_workers: ${var.num_workers}
+            spark_conf:
+              spark.databricks.delta.preview.enabled: "true"
+            aws_attributes:
+              instance_profile_arn: "{{instance_profile_arn}}"
+
+      tasks:
+        - task_key: bronze_ingest_all
+          job_cluster_key: bronze_cluster
+          python_wheel_task:
+            package_name: olist_ecommerce_data_platform
+            entry_point: bronze-olist
+          libraries:
+            - whl: ./dist/*.whl
+
+      schedule:
+        quartz_cron_expression: "0 0 3 * * ?"
+        timezone_id: "UTC"
+        pause_status: PAUSED
+
+      email_notifications:
+        on_failure:
+          - hello@gmail.com
