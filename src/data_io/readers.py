@@ -71,3 +71,69 @@ class DeltaReader:
         logger.info("Table Delta lue", extra={"table": table})
 
         return df
+
+
+class ParquetReader:
+    """
+    Reads a Parquet file into a Spark DataFrame.
+
+    Usage:
+        df = ParquetReader(spark).read("s3://bucket/path/file.parquet")
+        df = ParquetReader(spark).read("/local/path/file.parquet")
+    """
+
+    def __init__(self, spark: SparkSession):
+        self.spark = spark
+
+    def read(self, path: str | Path) -> DataFrame:
+        """Reads a Parquet file from the given path."""
+        df = self.spark.read.parquet(str(path))
+
+        logger.info("Parquet lu", extra={"path": str(path)})
+
+        return df
+
+
+class JsonReader:
+    """
+    Reads a JSON file into a Spark DataFrame.
+
+    Usage:
+        df = JsonReader(spark).read("s3://bucket/path/file.json")
+        df = JsonReader(spark).read("/local/path/file.json")
+    """
+
+    def __init__(self, spark: SparkSession):
+        self.spark = spark
+
+    def read(self, path: str | Path) -> DataFrame:
+        """Reads a JSON file from the given path."""
+        df = self.spark.read.json(str(path))
+
+        logger.info("JSON lu", extra={"path": str(path)})
+
+        return df
+
+
+class DatabaseReader:
+    """
+    Reads a table from a relational database into a Spark DataFrame using JDBC.
+
+    Usage:
+        df = DatabaseReader(spark).read(
+            url="jdbc:postgresql://host:port/database",
+            table="schema.table",
+            properties={"user": "username", "password": "password"}
+        )
+    """
+
+    def __init__(self, spark: SparkSession):
+        self.spark = spark
+
+    def read(self, url: str, table: str, properties: dict) -> DataFrame:
+        """Reads a table from a relational database using JDBC."""
+        df = self.spark.read.jdbc(url=url, table=table, properties=properties)
+
+        logger.info("Table lue depuis la base de données", extra={"url": url, "table": table})
+
+        return df
