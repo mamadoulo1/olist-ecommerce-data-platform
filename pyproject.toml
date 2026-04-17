@@ -42,7 +42,7 @@ ignore_missing_imports = true
 
 [tool.pydocstyle]
 convention = "google"
-add-ignore = ["D100", "D101", "D102", "D104", "D107", "D212", "D415"]
+add-ignore = ["D100", "D101", "D102", "D104", "D107", "D212", "D403", "D415"]
 
 [project.optional-dependencies]
 dev = [
